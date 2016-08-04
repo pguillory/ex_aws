@@ -7,6 +7,7 @@ defmodule ExAws.Auth do
     datetime = :calendar.universal_time
     headers = [
       {"host", URI.parse(url).host},
+      {"x-amz-security-token", System.get_env("AWS_SESSION_TOKEN")},
       {"x-amz-date", amz_date(datetime)} |
       headers
     ]
